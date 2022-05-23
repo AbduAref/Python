@@ -7,12 +7,12 @@ import os
 
 def main():
     choice = 0
+    os.system('clear')
     while choice not in (1,2,3,4,5,6):
-        print('aaa')
         while True: #checks if number is not in this
             try:
                 print('game is starting . . .') #prints out a welcome message
-                choice = int(input('[1] Load New puzzle \n[2] Load Partically Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6]Exit\n')) #prints out the menu
+                choice = int(input('[1] Load New puzzle \n[2] Load Partically Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6] Exit\n')) #prints out the menu
             except:
                 print('--------------------')
                 print('Please enter a number!')
@@ -45,14 +45,19 @@ def main():
 def solve(board):
     looping = True
     while looping:
+        os.system('clear') 
         try:
-            print('If you want to exit, just press enter')
+            os.system('clear')
+            draw_board(board)
+            print('If you want to go to menu, press CTRL+C , if you wanna exit, press 0')
+            print('Please enter a number in the format digit and row and column like 257 to say digit 7 in row 2, column 5')
             co_ordinate = int(input('Enter the co-ordinate of the cell you want to change: '))
             co_ordinate = str(co_ordinate)
-            os.system('cls') #not tested yet, check if its correct
+        except KeyboardInterrupt: #if user presses ctrl+C it will exit the program and go to board
+            return board
         except:
             print('Please enter a number!')
-        
+
         if co_ordinate == '':
             return board
 
@@ -65,13 +70,13 @@ def solve(board):
             continue #May loop back in the while loop, if not then call solve(board)
         else:
             board[int(co_ordinate[0])-1][int(co_ordinate[1])-1]=co_ordinate[2] # -1 because of a list (row,column is the format)
-            draw_board(board)
 
 
 
 
 
 def draw_board(board):
+    print('123 456 789')
     for index,row in enumerate(board):
         row = '|'.join(''.join(row[i:i+3]) for i in [0,3,6]) #Gets each 3 items in a row and puts a | in between them
         if index and index%3==0:
@@ -125,8 +130,12 @@ def check_solution(board):
                 
                 
 
-def save(board):
-    pass
+def save(board): #probebly does not work maybe fix later????
+    with open('save.txt', 'a') as f:
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                f.write(i,j,board[i][j])
+        f.write(''.join(board)) #fix later
 
 
 if __name__ == "__main__":
