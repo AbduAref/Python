@@ -41,6 +41,7 @@ def main():
                 else:
                     print('Please enter a valid number')
 
+
 def solve(board):
     looping = True
     while looping:
