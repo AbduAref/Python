@@ -99,7 +99,8 @@ def new_board():
 
 
 def load():
-    pass
+    f = open("demofile2.txt", "r")
+    print(f.read())
 
 
 def check_solution(board):
@@ -115,7 +116,8 @@ def check_solution(board):
 ['3', '4', '5', '2', '8', '6', '1', '7', '9']
 ]
     #board_s = [list(map(int, row)) for row in board_s]
-    #Change this forloop later to include a enumerate function
+    #Change this f
+    # orloop later to include a enumerate function
     incorrect = 0
     for i in range(len(board_s)): #checks if the board is correct
         for j in range(len(board_s[i])):
@@ -127,8 +129,7 @@ def check_solution(board):
         print('Sorry, you did not solve the puzzle!, you have {} incorrect guesses'.format(incorrect))
 
     return board
-                
-                
+
 
 def save(board): #probebly does not work maybe fix later????
     with open('save.txt', 'a') as f:
@@ -136,7 +137,6 @@ def save(board): #probebly does not work maybe fix later????
             for j in range(len(board[i])):
                 f.write(i,j,board[i][j])
         f.write(''.join(board)) #fix later
-
 
 if __name__ == "__main__":
     main()
