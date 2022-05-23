@@ -99,9 +99,8 @@ def new_board():
 
 
 def load():
-    f = open("demofile2.txt", "r")
-    print(f.read())
-
+    pass
+ 
 
 def check_solution(board):
     board_s=[
@@ -140,3 +139,6 @@ def save(board): #probebly does not work maybe fix later????
 
 if __name__ == "__main__":
     main()
+
+
+
