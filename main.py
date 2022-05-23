@@ -49,8 +49,9 @@ def solve(board):
         try:
             os.system('clear')
             draw_board(board)
-            print('If you want to go to menu, press CTRL+C , if you wanna exit, press 0')
-            print('Please enter a number in the format digit and row and column like 257 to say digit 7 in row 2, column 5')
+            print('If you want to go to menu, press CTRL+C, if you wanna exit the program completely, press 0')
+            print('Please enter a number in the following format:')
+            print('input will be row|column|digit')
             co_ordinate = int(input('Enter the co-ordinate of the cell you want to change: '))
             co_ordinate = str(co_ordinate)
         except KeyboardInterrupt: #if user presses ctrl+C it will exit the program and go to board
@@ -69,6 +70,7 @@ def solve(board):
             print('Please enter a valid co-ordinate!')
             continue #May loop back in the while loop, if not then call solve(board)
         else:
+
             board[int(co_ordinate[0])-1][int(co_ordinate[1])-1]=co_ordinate[2] # -1 because of a list (row,column is the format)
 
 
@@ -100,7 +102,7 @@ def new_board():
 
 def load():
     pass
- 
+
 
 def check_solution(board):
     board_s=[
@@ -135,10 +137,8 @@ def save(board): #probebly does not work maybe fix later????
         for i in range(len(board)):
             for j in range(len(board[i])):
                 f.write(i,j,board[i][j])
+            f.write('\n')
         f.write(''.join(board)) #fix later
 
 if __name__ == "__main__":
     main()
-
-
-
