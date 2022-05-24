@@ -95,12 +95,12 @@ def new_board():
 ]
     return board
 
-# it works but i may add a if statemtn to decide whether to load the answer, base board or saved board
+#Fix this later, it works but i may add a if statemtn to decide whether to load the answer, base board or saved board
 def load():
-    with open('puzzleNP.txt', 'r') as f:
+    with open('puzzleN.txt', 'r') as f:
         board = f.read()
         board = board.split()
-        board = [list(row) for row in board]
+        board = [list(map(int, row)) for row in board]
     return board
 
 
