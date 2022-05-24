@@ -73,10 +73,6 @@ def solve(board):
 
             board[int(co_ordinate[0])-1][int(co_ordinate[1])-1]=co_ordinate[2] # -1 because of a list (row,column is the format)
 
-
-
-
-
 def draw_board(board):
     print('123 456 789')
     for index,row in enumerate(board):
@@ -99,12 +95,14 @@ def new_board():
 ]
     return board
 
-
+#Fix this later, it works but i may add a if statemtn to decide whether to load the answer, base board or saved board
 def load():
-    with open('save.txt', 'r') as f:
+    with open('puzzleN.txt', 'r') as f:
         board = f.read()
-        print(board)
+        board = board.split()
+        board = [list(map(int, row)) for row in board]
     return board
+
 
 
 def check_solution(board):
@@ -137,13 +135,13 @@ def check_solution(board):
     return board
 
 
-def save(board): #probebly does not work maybe fix later????
-    with open('save.txt', 'a') as f:
+def save(board): #probebly does not work maybe fix later???
+    with open('puzzleNP.txt', 'a') as f:
         for i in range(len(board)):
             for j in range(len(board[i])):
-                f.write(i,j,board[i][j])
+                f.write(str(board[i][j])) #str(i)+str(j)+
             f.write('\n')
-        f.write(''.join(board)) #fix later
+        print('Saved!')
 
 if __name__ == "__main__":
     main()
