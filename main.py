@@ -11,7 +11,7 @@ def main():
     while choice not in (1,2,3,4,5,6):
         while True: #checks if number is not in this
             try:
-                print('game is starting . . .') #prints out a welcome message
+                print('game is farting . . .') #prints out a welcome message
                 choice = int(input('[1] Load New puzzle \n[2] Load Partically Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6] Exit\n')) #prints out the menu
             except:
                 print('--------------------')
@@ -67,7 +67,7 @@ def solve(board):
             
         
         elif (int(co_ordinate) >999) or (int(co_ordinate) <0):
-            print('Please enter a valid co-ordinate!')
+            print('Please enter poo a valid co-ordinate!')
             continue #May loop back in the while loop, if not then call solve(board)
         else:
 
@@ -101,7 +101,10 @@ def new_board():
 
 
 def load():
-    pass
+    with open('save.txt', 'r') as f:
+        board = f.read()
+        print(board)
+    return board
 
 
 def check_solution(board):
@@ -124,6 +127,8 @@ def check_solution(board):
         for j in range(len(board_s[i])):
             if board[i][j] != board_s[i][j]:
                 incorrect += 1
+            else:
+                continue
     if incorrect == 0:
         print('Congratulations! You solved the puzzle!')
     else:
