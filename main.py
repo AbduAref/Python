@@ -74,11 +74,16 @@ def solve(board):
             board[int(co_ordinate[0])-1][int(co_ordinate[1])-1]=co_ordinate[2] # -1 because of a list (row,column is the format)
 
 def draw_board(board):
-    print('123 456 789')
+    print('  123 456 789')
+    print('  -----------')
     for index,row in enumerate(board):
         row = '|'.join(''.join(row[i:i+3]) for i in [0,3,6]) #Gets each 3 items in a row and puts a | in between them
         if index and index%3==0:
-            print('-'*3+'+'+'-'*3+'+'+'-'*3)
+            print('  '+'-'*3+'+'+'-'*3+'+'+'-'*3)
+        else:
+            print(index+1,end=' ')
+
+
         print(row)
 
 def new_board():
