@@ -117,9 +117,6 @@ def check_solution(board):
 ['2', '8', '7', '4', '1', '9', '6', '3', '5'], 
 ['3', '4', '5', '2', '8', '6', '1', '7', '9']
 ]
-    #board_s = [list(map(int, row)) for row in board_s]
-    #Change this f
-    # orloop later to include a enumerate function
     incorrect = 0
     for i in range(len(board_s)): #checks if the board is correct
         for j in range(len(board_s[i])):
@@ -127,6 +124,8 @@ def check_solution(board):
                 incorrect += 1
             else:
                 continue
+
+            
     if incorrect == 0:
         print('Congratulations! You solved the puzzle!')
     else:
@@ -139,7 +138,7 @@ def save(board): #probebly does not work maybe fix later???
     with open('puzzleNP.txt', 'w') as f:
         for i in range(len(board)):
             for j in range(len(board[i])):
-                f.write(str(board[i][j])) #str(i)+str(j)+
+                f.write(str(board[i][j])) #str(i)+str(j)+str(board[i][j])
             f.write('\n')
         print('Saved!')
 
