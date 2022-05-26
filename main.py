@@ -52,7 +52,7 @@ def solve(board):
             print('\033[92mIf you want to go to menu, press CTRL+C, if you wanna exit the program completely, press 0 \033[00m')
             print('Please enter a number in the following format:')
             print('input will be \033[92mrow|column|digit\033[00m')
-            co_ordinate = int(input('\033[92mEnter the co-ordinate \033[00m of the cell you want to change: '))
+            co_ordinate = int(input('\033[92mEnter the co-ordinate \033[00m of the cell you want to change: '))#ANSI escape color codes
             co_ordinate = str(co_ordinate)
         except KeyboardInterrupt: #if user presses ctrl+C it will exit the program and go to board
             return board
@@ -104,8 +104,6 @@ def load():
         board = board.split()
         board = [list(row) for row in board]
     return board
-
-
 
 def check_solution(board):
     board_s=[
