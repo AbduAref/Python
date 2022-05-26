@@ -11,11 +11,11 @@ def main():
     while choice not in (1,2,3,4,5,6):
         while True: #checks if number is not in this
             try:
-                print('game is farting . . .') #prints out a welcome message
-                choice = int(input('[1] Load New puzzle \n[2] Load Partically Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6] Exit\n')) #prints out the menu
+                print('game is loading . . .') #prints out a welcome message
+                choice = int(input('\033[93m[1] Load New puzzle \n[2] Load Partially Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6] Exit\n\033[00m')) #prints out the menu
             except:
                 print('--------------------')
-                print('Please enter a number!')
+                print('\033[91m Please enter a number!\033[00m') #ANSI escape color codes
                 print('--------------------')
             else:
                 if choice == 1:
@@ -49,10 +49,10 @@ def solve(board):
         try:
             os.system('clear')
             draw_board(board)
-            print('If you want to go to menu, press CTRL+C, if you wanna exit the program completely, press 0')
+            print('\033[92mIf you want to go to menu, press CTRL+C, if you wanna exit the program completely, press 0 \033[00m')
             print('Please enter a number in the following format:')
-            print('input will be row|column|digit')
-            co_ordinate = int(input('Enter the co-ordinate of the cell you want to change: '))
+            print('input will be \033[92mrow|column|digit\033[00m')
+            co_ordinate = int(input('\033[92mEnter the co-ordinate \033[00m of the cell you want to change: '))
             co_ordinate = str(co_ordinate)
         except KeyboardInterrupt: #if user presses ctrl+C it will exit the program and go to board
             return board
@@ -67,7 +67,7 @@ def solve(board):
             
         
         elif (int(co_ordinate) >999) or (int(co_ordinate) <0):
-            print('Please enter poo a valid co-ordinate!')
+            print('Please enter a valid co-ordinate!')
             continue #May loop back in the while loop, if not then call solve(board)
         else:
 
@@ -79,13 +79,10 @@ def draw_board(board):
     for index,row in enumerate(board):
         row = '|'.join(''.join(row[i:i+3]) for i in [0,3,6]) #Gets each 3 items in a row and puts a | in between them
         if index and index%3==0:
-            print('  '+'-'*3+'+'+'-'*3+'+'+'-'*3)
-        else:
-            print(index+1,end=' ')
-
-
-        print(row)
-
+            print('-'*3+'+'+'-'*3+'+'+'-'*3)
+        print(str(index+1)+'|'+row)
+    print('  -----------')
+    
 def new_board():
     board= [
 ['5','3','0','0','7','0','0','0','0'],
@@ -141,7 +138,7 @@ def check_solution(board):
 
 
 def save(board): #probebly does not work maybe fix later???
-    with open('puzzleNP.txt', 'a') as f:
+    with open('puzzleNP.txt', 'w') as f:
         for i in range(len(board)):
             for j in range(len(board[i])):
                 f.write(str(board[i][j])) #str(i)+str(j)+
