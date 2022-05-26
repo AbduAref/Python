@@ -13,6 +13,8 @@ def main():
             try:
                 print('game is loading . . .') #prints out a welcome message
                 choice = int(input('\033[93m[1] Load New puzzle \n[2] Load Partially Solved Puzzle \n[3] Check solution \n[4] Solve puzzle \n[5] Save \n[6] Exit\n\033[00m')) #prints out the menu
+            except UnboundLocalError:
+                print('Please create or load a new board!!(1 or 2)')
             except:
                 print('--------------------')
                 print('\033[91m Please enter a number!\033[00m') #ANSI escape color codes
@@ -102,17 +104,24 @@ def load():
     return board
 
 def check_solution(board):
-    board_s=[
-['5', '3', '4', '6', '7', '8', '9', '1', '2'],
-['6', '7', '2', '1', '9', '5', '3', '4', '8'], 
-['1', '9', '8', '3', '4', '2', '5', '6', '7'], 
-['8', '5', '9', '7', '6', '1', '4', '2', '3'], 
-['4', '2', '6', '8', '5', '3', '7', '9', '1'], 
-['7', '1', '3', '9', '2', '4', '8', '5', '6'], 
-['9', '6', '1', '5', '3', '7', '2', '8', '4'], 
-['2', '8', '7', '4', '1', '9', '6', '3', '5'], 
-['3', '4', '5', '2', '8', '6', '1', '7', '9']
-]
+#     board_s=[
+# ['5', '3', '4', '6', '7', '8', '9', '1', '2'],
+# ['6', '7', '2', '1', '9', '5', '3', '4', '8'], 
+# ['1', '9', '8', '3', '4', '2', '5', '6', '7'], 
+# ['8', '5', '9', '7', '6', '1', '4', '2', '3'], 
+# ['4', '2', '6', '8', '5', '3', '7', '9', '1'], 
+# ['7', '1', '3', '9', '2', '4', '8', '5', '6'], 
+# ['9', '6', '1', '5', '3', '7', '2', '8', '4'], 
+# ['2', '8', '7', '4', '1', '9', '6', '3', '5'], 
+# ['3', '4', '5', '2', '8', '6', '1', '7', '9']
+# ]
+#
+#Board is loaded from the file instead of the array above, it creates an identical board to the one above.
+    with open('puzzleNS.txt', 'r') as f:
+        board_s = f.read()
+        board_s = board_s.split()
+        board_s = [list(row) for row in board_s]
+    print(board_s)
     incorrect = 0
     for i in range(len(board_s)): #checks if the board is correct
         for j in range(len(board_s[i])):
