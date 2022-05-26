@@ -59,18 +59,14 @@ def solve(board):
         except:
             print('Please enter a number!')
 
-        if co_ordinate == '':
-            return board
-
         if co_ordinate == '0':
+            print('\033[91mExiting . . .\033[00m')
             exit()
-            
-        
+
         elif (int(co_ordinate) >999) or (int(co_ordinate) <0):
             print('Please enter a valid co-ordinate!')
             continue #May loop back in the while loop, if not then call solve(board)
         else:
-
             board[int(co_ordinate[0])-1][int(co_ordinate[1])-1]=co_ordinate[2] # -1 because of a list (row,column is the format)
 
 def draw_board(board):
@@ -125,7 +121,7 @@ def check_solution(board):
             else:
                 continue
 
-            
+
     if incorrect == 0:
         print('Congratulations! You solved the puzzle!')
     else:
